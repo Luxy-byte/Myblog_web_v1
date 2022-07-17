@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<!--
+                              _.._        ,------------.
+                           ,'      `.    ( We want you! )
+                          /  __) __` \    `-,----------'
+                         (  (`-`(-')  ) _.-'
+                         /)  \  = /  (
+                        /'    |--' .  \
+                       (  ,---|  `-.)__`
+                        )(  `-.,--'   _`-.
+                       '/,'          (  Wy",
+                        (_       ,    `/,-' )
+                        `.__,  : `-'/  /`--'
+                          |     `--'  |
+                          `   `-._   /
+                           \        (
+                           /\ .      \.  www.luluxy.cn
+                          / |` \     ,-\
+                         /  \| .)   /   \
+                        ( ,'|\    ,'     :
+                        | \,`.`--"/      }
+                        `,'    \  |,'    /
+                       / "-._   `-/      |
+                       "-.   "-.,'|     ;
+                      /        _/["---'""]
+                     :        /  |"-     '
+                     '           |      /
+                                 `      |
+-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python Gas Station</title>
+  <meta name="keywords" content="Luxy - 一个热爱Python的工程师" />
+  <meta name="author" content="Luxinghao">
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+  <link href="css/owl.carousel.css" rel="stylesheet" media="screen">
+  <link href="css/owl.theme.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
+  <link rel="stylesheet" type="text/css" href="fonts/sns_fonts/iconfont.css">
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+  <div class="login_menu" style="display: none;">
+    <h1>登&nbsp;陆</h1>
+    <i class="fa fa-close login_close" id="login_close"></i>
+    <ul>
+      <li>
+        <span for="username">Username：</span>
+        <input type="text" class="form-control login_info" id="username">
+      </li>
+      <li>
+        <span for="password">Password：</span>
+        <input type="password" class="form-control login_info" id="password">
+      </li>
+      <li style="text-align: center;">
+        <button class="btn btn-primary" id="user_login">登陆账号</button>
+      </li>
+    </ul>
+    <p style="margin: 20px 20px; cursor: pointer;" class="user_fgt_pwd">忘记密码</p>
+  </div>
+
+  <div class="register_menu" style="display: none;">
+    <h1>注&nbsp;册</h1>
+    <i class="fa fa-close register_close" id="register_close"></i>
+    <ul>
+      <li>
+        <span for="username">Username：</span>
+        <input type="text" class="form-control register_info" id="register_username" placeholder="4-12位字母加数字">
+      </li>
+      <li>
+        <span for="password">Password：</span>
+        <input type="password" class="form-control register_info" id="register_password" placeholder="6-18位字母加数字">
+      </li>
+
+      <li>
+        <span for="password">RePassword：</span>
+        <input type="password" class="form-control register_info" id="register_re_password" placeholder="6-18位字母加数字">
+      </li>
+
+      <li>
+        <img src="" alt="验证码" class="verify_code_pic" id="refresh_code">
+        <input type="text" class="form-control" id="verify_code">
+      </li>
+
+      <li style="text-align: center;">
+        <button class="btn btn-primary" id="user_register">注册账号</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+          <i class="fa fa-bars"></i>
+        </button>
+        <a class="navbar-brand page-scroll" href="#page-top"><i class="fa fa-terminal"></i></a>
+        <a class="navbar-brand page-scroll login" href=":javascript">登陆</a>
+        <a class="navbar-brand page-scroll register" href=":javascript">注册</a>
+        <a class="navbar-brand page-scroll user_login_info" href="./blog_user_center.html" style="display: none;"></a>
+        <p class="navbar-brand page-scroll" id="logout" style="font-size: 8px; cursor: pointer; display: none;">退出</p>
+
+      </div>
+      <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+        <ul class="nav navbar-nav">
+          <li class="hidden">
+            <a href="#page-top"></a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#services">博客功能</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#about">热门框架</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#achivements">面积技巧</a>
+            <!-- <a class="page-scroll" style="cursor: pointer;">面积技巧</a> -->
+          </li>
+          <li>
+            <a class="page-scroll" href="#contact">建议提交</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="intro">
+    <div class="intro-body" id="intro-background">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <h1><span class="brand-heading">Life is short Python Deserve</span></h1>
+            <p class="intro-text">luxh</p>
+            <a href="#services" class="btn btn-circle page-scroll">
+              <i class="fa fa-angle-double-down animated"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div id="services" class="text-center">
+    <div class="container">
+      <div class="section-title center">
+        <h2>Blog <strong>Center</strong></h2>
+        <hr>
+      </div>
+      <div class="space"></div>
+      <div class="row">
+        <div class="col-md-3 col-sm-6 service"> <i class="fa fa-laptop" id="write_blog"></i>
+          <h4><strong>撰写博客</strong></h4>
+          <p>write your blog</p>
+        </div>
+        <div class="col-md-3 col-sm-6 service"> <i class="fa fa-code" id="manage_blog"></i>
+          <h4><strong>博客管理</strong></h4>
+          <p>Check Personal Blog</p>
+        </div>
+        <div class="col-md-3 col-sm-6 service"> <i class="fa fa-rocket" id="blog_center"></i>
+          <h4><strong>博客大厅</strong></h4>
+          <p>Hot blog from station</p>
+        </div>
+        <div class="col-md-3 col-sm-6 service"> <i class="fa fa-bullseye" id="contact_operator"></i>
+          <h4><strong>联系站长</strong></h4>
+          <p>Any Question &nbsp;?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cnt_operator">
+    <i class="fa fa-close close_cnt"></i>
+    <h4>如遇紧急问题请联系：</h4>
+    <p>WeChat &nbsp;<strong>(LuxyLuxy6661)</strong></p>
+  </div>
+
+  <!-- About Section -->
+  <div id="about">
+    <div class="container">
+      <div class="section-title text-center center">
+        <h2><strong>Python</strong>&nbsp;Framework</h2>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-md-6"> <img src="img/about.png" class="img-responsive"> </div>
+        <div class="col-md-6">
+          <div class="about-text"> <i class="fa fa-users"></i>
+            <div class="padding-left">
+              <h4>Python-web</h4>
+              <p>
+                django flask
+              </p>
+            </div>
+            <i class="fa fa-gamepad"></i>
+            <div class="padding-left">
+              <h4>Python-game</h4>
+              <p>
+                Pygame
+              </p>
+            </div>
+            <i class="fa fa-magic"></i>
+            <div class="padding-left">
+              <h4>爬虫</h4>
+              <p>
+                requests selenium scrapy
+              </p>
+            </div>
+            <i class="fa fa-database"></i>
+            <div class="padding-left">
+              <h4>大数据 人工智能</h4>
+              <p>
+                正在研究....
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="achivements" class="section dark-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-3">
+          <div class="achivement-box">
+            <i class="fa fa-smile-o"></i>
+            <span class="count">1100</span>
+            <h4>常规面试</h4>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <div class="achivement-box">
+            <i class="fa fa-code"></i>
+            <span class="count">500</span>
+            <h4>高级问答</h4>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <div class="achivement-box">
+            <i class="fa fa-check-square-o"></i>
+            <span class="count">300</span>
+            <h4>算法必备</h4>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3">
+          <div class="achivement-box">
+            <i class="fa fa-trophy"></i>
+            <span class="count">1</span>
+            <h4>重点框架</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <div id="testimonials" class="text-center">
+    <div class="container">
+      <div class="section-title center">
+        <h2>站点 <strong>介绍</strong></h2>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div id="testimonial" class="owl-carousel owl-theme">
+            <div class="item">
+              <p >
+                三年入行 五年懂行 十年称王。</br>致敬每一位互联网开源作者，平凡且伟大。
+              </p>
+            </div>
+            <div class="item">
+              <p>
+                本站专为Python语言交流学习。</br>希望大家越来越热爱Python编程。
+              </p>
+            </div>
+            <div class="item">
+              <p>
+                Dont believen me just watch....</br>- Luxh
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact" class="text-center">
+    <div class="container">
+      <div class="section-title center">
+        <h2><strong>联系</strong> 方式</h2>
+        <hr>
+      </div>
+      <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-4"> <i class="fa fa-map-marker fa-2x"></i>
+          <p>四川省成都市双流区航空港</p>
+        </div>
+        <div class="col-md-4"> <i class="fa fa-envelope-o fa-2x"></i>
+          <p>1037756037@qq.com</p>
+        </div>
+        <div class="col-md-4"> <i class="fa fa-phone fa-2x"></i>
+          <p>微信:LuxyLuxy666</p>
+        </div>
+        <hr>
+        <div class="clearfix"></div>
+      </div>
+      <div class="col-md-8 col-md-offset-2">
+        <hr>
+        <h3>给我发邮件</h3>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" id="name" class="form-control" placeholder="姓名" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="email" id="email" class="form-control" placeholder="完整邮箱格式" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea name="message" id="message" class="form-control" rows="4" placeholder="内容" required></textarea>
+        </div>
+        <button class="btn btn-default message_sbt">确认发送</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <nav id="footer">
+    <div class="container">
+      <div class="pull-left fnav">
+        <p>蜀ICP备案号 &copy; 2022005647 站长：luxy.
+          <a style='color:#F4D03F' href="#" target="_blank" title="个人论坛">站长介绍</a> </p>
+      </div>
+      <div class="pull-right fnav">
+        <ul class="footer-social">
+          <li><a href=""><i class="icon iconfont">&#xe66e;</i></a></li>
+          <li><a href="">
+              <i class="icon iconfont">&#xe629;</i></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script type="text/javascript" src="js/jquery.1.11.1.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+  <script type="text/javascript" src="js/jquery.isotope.js"></script>
+  <script type="text/javascript" src="js/jquery.counterup.js"></script>
+  <script type="text/javascript" src="js/waypoints.js"></script>
+  <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
+  <script src="./js/emojiCursor.js"></script>
+  <script src="js/owl.carousel.js"></script>
+  <script src="./js/three.r119.min.js"></script>
+  <script src="./js/vanta.cells.min.js"></script>
+  <!-- Javascripts================================================== -->
+  <script type="text/javascript" src="js/main.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/lu_index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+body {
+  background: #435463;
+}
+
+main {
+  min-width: 320px;
+}
+
+.toolbar {
+  width: 100%;
+}
+
+.editor {
+  width: 100%;
+  height: 650px;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  text-decoration: none;
+  list-style: none;
+  text-align: center;
+  margin-top: 15px;
+}
+.header_info {
+  width: 100%;
+  height: 55px;
+  background-color: #aaa;
+  background: linear-gradient(to bottom, #6f7275 0%, #31353a 100%);
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+  padding: 15px;
+}
+.header_info h3 {
+  margin: 0px;
+  color: #f4d03f;
+  display: inline;
+}
+.header_info i {
+  font-size: 24px;
+  color: white;
+}
+
+.blog_title {
+  width: 100%;
+  height: 35px;
+  margin-bottom: 20px;
+}
+.blog_title_info {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  outline: 0px;
+}
+.blog_notify_info {
+  font-size: 14px;
+}
+
+.blog_button {
+  text-align: center;
+}
+.blog_button:first-child {
+  text-align: left;
+}
+.blog_button:nth-child(2) {
+  text-align: right;
+}
+
+.check_blog_info {
+  margin-top: 10px;
+}
+
+.check_blog_info span {
+  color: red;
+}
+
+.full-screen-container {
+  z-index: 100; /* 如有需要，可以自定义 z-index */
+}
+
+.after_submit_cover {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(
+    to right top,
+    #d16ba5,
+    #c777b9,
+    #ba83ca,
+    #aa8fd8,
+    #9a9ae1,
+    #8aa7ec,
+    #79b3f4,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
+  );
+  z-index: 2;
+}
+
+.after_submit_operation {
+  width: 320px;
+  height: 460px;
+  background-image: linear-gradient(
+    to right top,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.7)
+  );
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px 0px #555;
+  backdrop-filter: blur(30px);
+}
+.after_submit_operation h3 {
+  margin: 20px;
+  display: inline-block;
+  color: #555;
+}
+.after_submit_operation li {
+  text-align: left;
+  margin-left: 25px;
+}
+.after_submit_operation li i {
+  width: 25px;
+  height: 25px;
+  font-size: 20px;
+}
+.i_color {
+  font-weight: 400;
+  color: red;
+}
+.i_info {
+  color: #555;
+}
+
+.after_submit_operation button {
+  display: block;
+  width: 260px;
+  height: 50px;
+  margin: 20px auto;
+}
+
+.after_submit_operation a {
+  display: block;
+  margin-left: 30px;
+}
+[v-cloak] {
+  display: none;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s;
+}
+
+.loading_module {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 200px;
+  height: 260px;
+  background: #37474f;
+  z-index: 9;
+  border-radius: 5px;
+}
+
+/* loading */
+.loading_module p{
+  margin: 10px;
+  color: white;
+  font-size: 16px;
+}
+
+@keyframes spin {
+  from {
+      transform: rotate(0);
+  }
+
+  to {
+      transform: rotate(359deg);
+  }
+}
+
+.solar-system {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orbit {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ffffffa5;
+  border-radius: 50%;
+}
+
+.earth-orbit {
+  width: 165px;
+  height: 165px;
+  -webkit-animation: spin 12s linear 0s infinite;
+}
+
+.venus-orbit {
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 7.4s linear 0s infinite;
+}
+
+.mercury-orbit {
+  width: 90px;
+  height: 90px;
+  -webkit-animation: spin 3s linear 0s infinite;
+}
+
+.planet {
+  position: absolute;
+  top: -5px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #3ff9dc;
+}
+
+.sun {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #ffab91;
+}

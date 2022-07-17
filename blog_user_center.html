@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="./css/usercenterinfo.css">
+    <script src="./js/vue.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/emojiCursor.js"></script>
+</head>
+
+<body>
+    <main id="app">
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-3"></div>
+                    <div class="col-xs-8 col-sm-6">
+                        <div class="header_body" v-cloak>
+                            <p v-if="user_info_data & user_info_data.length > 0"><i class="fa fa-terminal"></i>&nbsp;<strong>{{ user_info_data.real_name }}</strong></p>
+                            <p v-else><i class="fa fa-terminal"></i>&nbsp;<strong>{{ username }}</strong></p>
+                        </div>
+                    </div>
+                    <div class="col-xs-2 col-sm-3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container main_body">
+
+            <div class="row">
+
+                <div class="hidden-xs hidden-sm col-md-4">
+
+                    <img src="./img/userinfo_log2.png" alt="" class="user_info_logo">
+
+                </div>
+
+                <div class="col-md-8 userinfo_right">
+                    <h1>个人信息</h1>
+                    <p><span>注册日期：</span><span v-text="user_info_data.create_time.slice(0,10)"
+                            v-if="user_info_data.create_time"></span></p>
+                    <p v-if="user_info_data.user_type == '2'"><span>状态：</span><span
+                            style="font-weight: 300em; color:#ccc">已认证&nbsp;&nbsp;<span style="font-size:12px; color:#ccc">(修改信息请留言管理员)</span></span></p>
+
+                    <p v-else-if="user_info_data.user_type == '1'"><span>状态：</span><span
+                            style="font-weight: 300em; color:green">正在认证&nbsp;&nbsp;<span style="font-size:12px; color:#ccc">(修改信息请留言管理员)</span></span></p>
+
+                    <p v-else v-cloak><span>状态：</span><span style="font-weight: 300em; color:red">未认证</span></p>
+
+                    <hr />
+                    <ul v-cloak>
+                        <li>
+                            <p><i class="fa fa-user"></i>&nbsp;真实姓名:<i class="must_info">*</i></p>
+                            <input type="text" class="form-control input_style" v-model.lazy="real_name"
+                                v-if="user_info_data.real_name && user_info_data.real_name.length > 0"
+                                :placeholder="user_info_data.real_name">
+                            <input type="text" class="form-control input_style" v-model.lazy="real_name" v-else
+                                placeholder="请填写真实姓名">
+                        </li>
+                        <li>
+                            <p><i class="fa fa-envelope"></i>&nbsp;邮箱:</p>
+                            <input type="text" class="form-control input_style" v-model.lazy="user_email"
+                                v-if="user_info_data.email && user_info_data.email.length > 0"
+                                :placeholder="user_info_data.email">
+                            <input type="text" class="form-control input_style" v-model.lazy="user_email" v-else
+                                placeholder="请填写真实邮箱">
+                        </li>
+                        <li>
+                            <p><i class="fa fa-phone"></i>&nbsp;电话:<i class="must_info">*</i></p>
+                            <input type="text" class="form-control input_style" v-model.lazy="user_phone"
+                                v-if="user_info_data.phone && user_info_data.phone.length > 0"
+                                :placeholder="user_info_data.phone">
+                            <input type="text" class="form-control input_style" v-model.lazy="user_phone" v-else
+                                placeholder="请填写真实手机号">
+                        </li>
+                        <li>
+                            <p><i class="fa fa-weixin"></i>&nbsp;微信:<i class="must_info">*</i></p>
+                            <input type="text" class="form-control input_style" v-model.lazy="user_wx"
+                                v-if="user_info_data.wx_num && user_info_data.wx_num.length > 0"
+                                :placeholder="user_info_data.wx_num">
+                            <input type="text" class="form-control input_style" v-model.lazy="user_wx" v-else
+                                placeholder="请填写真实微信号">
+                        </li>
+                        <li>
+                            <p><i class="fa fa-comment-o" aria-hidden="true"></i>&nbsp;备注信息:<i class="must_info">*</i>
+                            </p>
+                            <input type="text" class="form-control input_style" v-model.lazy="tmp_remark"
+                                v-if="user_info_data.user_remark && user_info_data.user_remark.length > 0"
+                                :placeholder="user_info_data.user_remark" disabled>
+                            <input type="text" class="form-control input_style" v-model.lazy="tmp_remark" v-else
+                                placeholder="例：20220506">
+
+                        </li>
+                    </ul>
+                    <br>
+                    <p class="bg-danger notify_msg" v-cloak v-show="alertshow">{{ alertMessage }}</p>
+
+
+                    <div class="footer_button">
+                        <button class="btn btn-primary" @click="submit_info" v-if="user_info_data.user_type == '0'">提交认证</button>
+                        <button class="btn btn-primary" v-else disabled>提交认证</button>
+                    </div>
+                    <hr />
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <script src="./js/userinfo.js"></script>
+</body>
+
+</html>

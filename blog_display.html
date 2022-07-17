@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/wangeditor.css">
+    <link rel="stylesheet" href="./css/bootstrap-5.min.css">
+    <link rel="stylesheet" href="./css/blog_display.css">
+    <script src="./js/wangeditor.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/axios.min.js"></script>
+
+    <title>博客</title>
+    <script>
+        window.onload = function () {
+
+            var vm = new Vue({
+
+                el: "#app",
+                data: {
+                    baseURL: 'http://127.0.0.1:8000/',
+                    blog_id: window.sessionStorage.getItem('blog_id'),
+                    blog_data: '',
+
+                    token: sessionStorage.getItem('token'),
+                },
+
+                methods: {
+
+                },
+                mounted: function () {
+
+                    if(this.token){
+                        axios.defaults.headers['Authorization'] = 'JWT ' + this.token
+                    }
+                    axios.defaults.baseURL = this.baseURL;
+                    if (this.blog_id) {
+                        let that = this
+                        async function init() {
+                            var res = await axios.get('blog_display/' + that.blog_id)
+                            return res.data
+                        }
+                        var result = init()
+                        result.then(res => {
+                            that.blog_data = res
+                            const {
+                                createEditor,
+                                createToolbar
+                            } = window.wangEditor;
+
+                            const editorConfig = {}
+                            const editor = createEditor({
+                                html: res.blog_html_version,
+                                selector: '#editor-container',
+                                config: editorConfig,
+                                mode: 'simple',
+                            });
+                            editor.disable()
+                        })
+                    }
+
+                },
+                destroyed: function () {
+                    editor.destroyed()
+                    window.localStorage.removeItem('tmp_blog')
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <main id="app">
+        <div class="container">
+            <div class="row">
+                <div class="header col-xs-12">
+                    <ul>
+                        <li>
+                            <a class="btn btn-primary" href="./blog_index.html">返回首页</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary" href="./blog_manage_center.html">管理博客</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="blog col-xs-12">
+                    <ul v-cloak>
+                        <li>
+                            <h1>{{ blog_data.blog_title }}</h1>
+                        </li>
+                        <li>
+                            <ul class="blog_info">
+                                <li>作者：{{ blog_data.nickname }}</li>
+                                <li>分类：{{ blog_data.blog_type}}</li>
+                                <li>日期：{{ blog_data.submit_date}}</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div id="editor-container"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+                <div class="flex-shrink-0">
+                    <div class="container">
+                        <h1 class="mt-5">请尊重每一位原创作者</h1>
+                        <p class="lead">本站所有博客，意在传播分享Python为核心的技术知识点<code class="small"></code> To every <code
+                                class="small">&gt; Python-developer</code>.</p>
+                        <p>Back to <a href="./blog_center.html">Blog-Center</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
