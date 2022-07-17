@@ -1,0 +1,182 @@
+body {
+  min-height: 100vh;
+  background-image: linear-gradient(
+    to right top,
+    #dc9b0d,
+    #e2634b,
+    #b64773,
+    #6c447d,
+    #1f3b62
+  );
+}
+
+header {
+  width: 100%;
+  height: 180px;
+}
+
+header h1 {
+  display: inline-block;
+  margin: 60px;
+}
+
+hr {
+  height: 1px;
+  border: none;
+  border-top: 1px solid #6c447d;
+}
+
+.user_info_display {
+  width: 100%;
+  height: 300px;
+  border-left: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
+}
+
+.recommend_blog {
+  width: 100%;
+  height: 500px;
+  /* border: 1px solid black; */
+  border-left: 1px solid #ccc;
+}
+
+.besaide_ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+.besaide_ul li {
+  list-style: none;
+  display: block;
+  width: 85%;
+  height: 25px;
+  margin-top: 20px;
+  margin-left: 20px;
+  border-bottom: 1px dashed black;
+}
+
+.besaide_ul a {
+  color: black;
+  text-decoration: none;
+}
+
+.besaide_ul a:visited {
+  text-decoration: none;
+}
+
+.besaide_ul i {
+  color: red;
+}
+
+h4 {
+  margin: 20px;
+}
+
+.blog_list_head {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  width: 100%;
+  height: 40px;
+  font-size: 24px;
+}
+
+.blog_list_head input {
+  width: 70%;
+  height: 30px;
+  text-align: center;
+  display: inline-block;
+  margin-left: 15%;
+}
+
+.search_logo {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  font-size: 25px;
+  color: #dc9b0d;
+}
+
+.blog_list {
+  width: 100%;
+  height: 700px;
+  /* border: 1px solid black; */
+}
+
+.blog_list ul {
+  padding: 0;
+  margin: 0;
+}
+
+.blog_list li {
+  padding: 0px 10px;
+  display: block;
+  margin-top: 30px;
+  margin-left: 10px;
+  border-bottom: 1px solid #ccc;
+  width: 95%;
+  height: 30px;
+}
+
+.blog_list li button {
+  float: right;
+  margin-right: 5px;
+}
+
+.blog_list li a {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.blog_list li a:hover {
+  color: white;
+}
+
+.page_mag {
+  width: 100%;
+  height: 80px;
+  margin-top: 10px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.page_mag a {
+  display: inline-block;
+  font-size: 16px;
+  color: white;
+}
+
+.page_mag ul {
+  padding: 0px;
+  margin: 0px;
+  display: inline-block;
+  margin-top: 25px;
+}
+
+.page_mag li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.page_mag li i {
+  color: black;
+  font-size: 20px;
+}
+
+.page_mag input {
+  width: 30px;
+  height: 20px;
+}
+[v-cloak] {
+  display: none;
+}
+
+.page_cursor{
+  cursor: pointer;
+}
+.page_cursor:hover{
+  color: azure;
+}

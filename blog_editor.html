@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/wangeditor.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="./css/editorblog.css">
+    <script src="./js/wangeditor.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/blog_editor.js"></script>
+    <title>博客编写</title>
+</head>
+
+<body>
+    <main id="app">
+        <div class="after_submit_cover" v-show="after_submit" v-cloak>
+            <div class="after_submit_operation">
+                <h3><i class="fa fa-terminal i_color" aria-hidden="true"></i>&nbsp;提交成功正在审核...</h3>
+                <ul>
+                    <li><i class="fa fa-file-code-o i_info" aria-hidden="true"></i>- {{ submit_blog_title }}</li>
+                    <li><i class="fa fa-user i_info" aria-hidden="true"></i>- {{ submit_blog_user }}</li>
+                    <li><i class="fa fa-calendar i_info" aria-hidden="true"></i>- {{ submit_blog_date }}</li>
+                </ul>
+                <button type="button" class="btn btn-success btn-lg" @click="check_blog_display">预览博客</button>
+                <button type="button" class="btn btn-info btn-lg" @click="write_another_blog">在写一篇</button>
+                <button type="button" class="btn btn-danger btn-lg" @click="jump_manage_blog">管理博客</button>
+
+                <a href="./blog_index.html">返回大厅</a>
+
+            </div>
+        </div>
+
+        <div class="loading_module" v-show="loading_status">
+            <p style="margin: 10px;color: white;">正在请求....</p>
+                <div class="solar-system">
+                    <div class="earth-orbit orbit">
+                        <div class="planet earth"></div>
+                        <div class="venus-orbit orbit">
+                            <div class="planet venus"></div>
+                            <div class="mercury-orbit orbit">
+                                <div class="planet mercury"></div>
+                                <div class="sun"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="header_info">
+            <i class="fa fa-terminal"></i>&nbsp;
+            <h3>编辑博客：</h3>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12">
+                    <h3 style="color: white;">撰写规则：</h3>
+                    <p class="bg-primary blog_notify_info">标题：长度不得超过16个字，可包含 字母 文字 数字.</p>
+                    <p class="bg-success blog_notify_info">正文：不得撰写非法信息，广告，以及使用诋毁国家及他人的措辞.</p>
+                    <p class="bg-info blog_notify_info">引用：如有引用他人内容请标明相关出处.</p>
+                    <p class="bg-danger blog_notify_info">图片：图片大小不得超过1m，每篇博文不得超过10张图片，格式仅支持 -> png / jpg / jpeg.</p>
+                </div>
+
+                <div class="col-xs-12 blog_title"><input type="text" placeholder="博客标题"
+                        class="blog_title_info form-control" v-model="blog_title"></div>
+
+                <div class="col-xs-12 blog_title"><select name="博客类型" class="form-control" v-model="submit_blog_type">
+                        <option value=0>请选择博客类型</option>
+                        <option :value="item.id" v-for="(item,index) in blog_type">{{ item.blog_type_name }}
+                        </option>
+                    </select></div>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 toolbar" id="toolbar-container"></div>
+                <div class="col-xs-12 editor" id="editor-container"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 check_blog_info">
+
+                    <input type="checkbox" v-model="regulations" @click="check_regulation">&nbsp;<span
+                        v-cloak>郑重声明：此博客由账号"{{ username }}"亲自编写，与站点无任何直接关系</span>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <ul>
+                    <li class="col-xs-3 blog_button"><button class="btn btn-danger btn-md"
+                            @click="clear_article">重置博客</button></li>
+                    <li class="col-xs-3 blog_button"><button class="btn btn-info btn-md"
+                            :disabled='regular_submit'>保存草稿</button></li>
+                    <li class="col-xs-6 blog_button"><button class="btn btn btn-primary btn-md btn-block"
+                            @click="submit_article" :disabled='regular_submit'>发布博客</button></li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+
+</html>
